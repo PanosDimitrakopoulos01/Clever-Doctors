@@ -1,5 +1,5 @@
 
-public class Patient 
+public class Patient {
 
 	private Patient patients[];
 	private static int countP = 0;
