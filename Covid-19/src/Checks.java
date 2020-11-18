@@ -16,7 +16,7 @@ public class Checks {
 			break;
 		//case 1:
 			//regX = dateRegex;
-			  //break;
+			//break;
 		case 2:
 			regX = emailRegex;
 			break;
