@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main (String[]args) {
+		
+		Scanner in = new Scanner(System.in);
+
 		String answer = "";
 		int count1 = 0;
 		String fullname;
@@ -11,7 +14,6 @@ public class Main {
 		String date;
 		String mail;
 		do {
-			Scanner in = new Scanner(System.in);
 			boolean flag;
 			System.out.println("Εισάγετε το ονοματεπόνηυμο του ασθενούς");
 			do {
