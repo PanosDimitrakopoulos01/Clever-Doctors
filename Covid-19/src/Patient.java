@@ -22,17 +22,11 @@ public class Patient {
 		countP += 1;
 	}
 	
-	public String getFirstName() {
-		return firstName;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setFirstName(String fullName) {
+		this.fullName = fullName;
 	}
 	public int getId() {
 		return id;
@@ -53,8 +47,8 @@ public class Patient {
 		this.email = email;
 	}
 	
-	public void addContact(String firstName, String lastName, String email) {
-		Contact con = new Contact(firstName, lastName, email);
+	public void addContact(String fullName, String email) {
+		Contact con = new Contact(fullName, email);
 		contacts[countC] = con;
 		countC += 1;
 	}
