@@ -1,8 +1,7 @@
 
 public class Contact {
 
-	private String firstName;
-	private String lastName;
+	private String fullName;
 	private String email;
 	
 	public Contact(String fullName, String email) {
@@ -13,7 +12,7 @@ public class Contact {
 	public String getFullName() {
 		return fullName;
 	}
-	public void setFirstName(String fullName) {
+	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 	public String getEmail() {
