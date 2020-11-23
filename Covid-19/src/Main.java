@@ -4,10 +4,8 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main (String[]args) {
-		String answer;
-		String answer1;
-		int count1;
-		count1 = 0;
+		String answer = "";
+		int count1 = 0;
 		String fullname;
 		String code;
 		String date;
@@ -75,8 +73,8 @@ public class Main {
 				}
 			}while (answer == "ΟΧΙ");
 			System.out.println("Θέλετε να εισάγεται τα στοιχεία επόμενου ασθενούς; ΝΑΙ ή ΟΧΙ");
-			answer1 = in.nextLine();
-			while (answer1 != "ΝΑΙ" && answer1 != "ΟΧΙ") {
+			answer = in.nextLine();
+			while (answer != "ΝΑΙ" && answer != "ΟΧΙ") {
 				System.out.println("Δώστε μία σωστή απάντηση");				
 			}
 		}while (answer1 == "ΟΧΙ");
