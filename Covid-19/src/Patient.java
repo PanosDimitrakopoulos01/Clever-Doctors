@@ -3,18 +3,16 @@ public class Patient {
 
 	private Patient patients[];
 	private static int countP = 0;
-	private String firstName;
-	private String lastName;
+	private String fullName
 	private int id;
 	private int datePos;
 	private String email;
 	private Contact contacts[];
 	private int countC = 0;
 	
-	public Patient(String firstName, String lastName, int id, int datePos, String email) {
+	public Patient(String fullName, int id, int datePos, String email) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstName = fullName;
 		this.id = id;
 		this.datePos = datePos;
 		this.email = email;
@@ -25,7 +23,7 @@ public class Patient {
 	public String getFullName() {
 		return fullName;
 	}
-	public void setFirstName(String fullName) {
+	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 	public int getId() {
