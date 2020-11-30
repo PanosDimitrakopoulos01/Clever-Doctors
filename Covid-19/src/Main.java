@@ -15,7 +15,7 @@ public class Main {
 		String mail;
 		do {
 			boolean flag;
-			System.out.println("Εισάγετε το ονοματεπόνηυμο του ασθενούς");
+			System.out.println("Εισάγετε το ονοματεπώνυμο του ασθενούς");
 			do {
 				fullname = in.nextLine();
 				flag = Checks.validation(0,fullname);
