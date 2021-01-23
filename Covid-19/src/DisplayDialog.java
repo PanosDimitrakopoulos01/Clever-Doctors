@@ -1,3 +1,5 @@
+/* Παράθυρο Διαλόγου για την εμφάνιση στοιχείων ασθενή και επαφών του*/
+
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -16,7 +18,8 @@ public class DisplayDialog extends JDialog{
 	Contact contact;
 	boolean newPatient;
 	
-	 class Action1 implements ActionListener {
+	/*Δράση για το κλείσιμο του παραθύρου, με το πάτημα του κουμπιού "Έξοδος"*/
+	class Action1 implements ActionListener {
 	        private JDialog parent;
 
 	        Action1(JDialog parent) {
@@ -27,6 +30,7 @@ public class DisplayDialog extends JDialog{
 	        }
 	    }
 
+	/*Constructor παραθύρου διαλόγου*/
 	public DisplayDialog(Patient pat) {
 		setModal(true);
 	    setSize(450, 450);

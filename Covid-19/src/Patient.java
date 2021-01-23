@@ -1,4 +1,7 @@
 import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -16,7 +19,7 @@ import java.io.FileNotFoundException;
  */
 public class Patient {
 
-	protected static Patient patients[] = new Patient[1000];
+	public static Patient patients[] = new Patient[1000];
 	protected static int countP = 0;
 	protected Contact contacts[] = new Contact[100];
 	protected int countC = 0;
@@ -92,6 +95,7 @@ public class Patient {
 				sndml.Send(this.contacts[i].getEmail());
 			}
 		}
+		JOptionPane.showMessageDialog(null, "Επιτυxής Αποστολή Email προς Επαφή", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	/* Μέθοδος αναζήτησης συγκεκριμένου ασθενή */
@@ -110,9 +114,14 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "\nΑΣΘΕΝΗΣ: " +  fullName + "\nΤΗΛΕΦΩΝΟ: " + phone
-				+ "\nΗΜΕΡΟΜΗΝΙΑ ΔΙΑΓΝΩΣΗΣ: " + datePos + "\nEMAIL: " + email + "\nΕΠΑΦΕΣ: " + Arrays.toString(contacts);
-		
+		String result = "ID: " + id + "\nΑΣΘΕΝΗΣ: " +  fullName + "\nΤΗΛΕΦΩΝΟ: " + phone
+				+ "\nΗΜΕΡΟΜΗΝΙΑ ΔΙΑΓΝΩΣΗΣ: " + datePos + "\nEMAIL: " + email + "\nΕΠΑΦΕΣ: \n";
+		for(int i=0 ; i<this.countC ; i++) {
+			if(this.contacts[i] != null) {
+				result += contacts[i].toString() + "\n";
+			}
+		}
+		return result;
 	}
 	
 	/*Μέθοδος που γράφει τα στοιχεία του ασθενή στο αρχείο*/
