@@ -1,3 +1,5 @@
+/* Παράθυρο Διαλόγου για την εισαγωγή και διόρθωση στοιχείων επαφής*/
+
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -11,9 +13,11 @@ public class ContactDialog extends JDialog{
 	Color red = new Color(255, 0, 0);
 	Color black = new Color(0, 0, 0);
 	Patient patient;
+	Contact contact;
 	Mail sndml = new Mail();
 	
-	 class Action1 implements ActionListener {
+	/*Δράση για το κλείσιμο του παραθύρου, με το πάτημα του κουμπιού "Έξοδος"*/
+	class Action1 implements ActionListener {
 	        private JDialog parent;
 
 	        Action1(JDialog parent) {
@@ -23,8 +27,9 @@ public class ContactDialog extends JDialog{
 	            parent.dispose();
 	        }
 	    }
-	 
-	 class Action2 implements ActionListener {
+	
+	/*Δράση για την αποθήκευση των δεδομένων, με το πάτημα του κουμπιού "Αποθήκευση"*/
+	class Action2 implements ActionListener {
 		 private JDialog parent;
 
 	        Action2(JDialog parent) {
@@ -34,6 +39,8 @@ public class ContactDialog extends JDialog{
 	        	String fullname = t1.getText();
 	        	String mail = t2.getText();
 				boolean flag, OKFlag;
+				// Validation δεδομένων, σε περίπτωση σφάλματος το πεδίο με το σφάλμα γίνεται κόκκινο
+				//και δεν επιτρέπεται η αποθήκευση
 				OKFlag = true;
 				flag = check.validation(0,fullname);
 	        	if(!flag) {
@@ -51,14 +58,27 @@ public class ContactDialog extends JDialog{
 				}
 	        	OKFlag = OKFlag && flag;
 	        	if (OKFlag) {
-	        		patient.addContact(fullname, mail);
+	        		if (contact == null) {
+		        		patient.addContact(fullname, mail);
+	        		} else {
+	        			contact.setFullName(fullname);
+	        			contact.setEmail(mail);
+	        		}
+	        		//Αποστολή email
 	        		patient.sendEmails(sndml);
+	        		//Καθαρισμός πεδίων για εισαγωγή νέας επαφής
+	        		t1.setText("");
+	        		t2.setText("");
+	        		contact = null;
+	        		parent.setTitle("Clever Doctors - Εισαγωγή Νέας Επαφής");
 	        	} else {
 	        		JOptionPane.showMessageDialog(parent, "Μη Έκγυρη Εισαγωγή", "Error", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
 	    }
-	 
+	
+	/*Constructor παραθύρου διαλόγου*/
+	/*Εάν το όρισμα con είναι null γίνεται εισαγωγή νέας επαφής, διαφορετικά γίνεται διόρθωση στοιχείων της con*/
 	public ContactDialog(Patient pat, Contact con) {
 		patient = pat;
 		setModal(true);
@@ -76,7 +96,7 @@ public class ContactDialog extends JDialog{
 	    JButton b2 = new JButton("Αποθήκευση");
 	    b2.setBounds(270,120,150,30);	 add(b2);
 	    b2.addActionListener(new Action2(this));
-	    
+	    contact = con;
 		if (con == null) {
 			setTitle("Clever Doctors - Εισαγωγή Νέας Επαφής");
 		} else {

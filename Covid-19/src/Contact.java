@@ -34,7 +34,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "ΕΠΑΦΗ:" + fullName + "EMAIL" + email;
+		return  fullName + ", "+ email;
 	}
 	
 	/*Μέθοδος που αναζητά το όνομα μιας επαφής και επιστρέφει τη θέση της στον πίνακα*/

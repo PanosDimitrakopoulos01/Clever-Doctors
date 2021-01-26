@@ -1,3 +1,5 @@
+/* Παράθυρο Διαλόγου για την εισαγωγή και διόρθωση στοιχείων ασθενή*/
+
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -16,7 +18,8 @@ public class PatientDialog extends JDialog{
 	Contact contact;
 	boolean newPatient;
 	
-	 class Action1 implements ActionListener {
+	/*Δράση για το κλείσιμο του παραθύρου, με το πάτημα του κουμπιού "Έξοδος"*/
+	class Action1 implements ActionListener {
 	        private JDialog parent;
 
 	        Action1(JDialog parent) {
@@ -27,6 +30,7 @@ public class PatientDialog extends JDialog{
 	        }
 	    }
 	 
+	/*Δράση για την αποθήκευση των δεδομένων, με το πάτημα του κουμπιού "Αποθήκευση"*/
 	 class Action2 implements ActionListener {
 		 private JDialog parent;
 
@@ -39,6 +43,8 @@ public class PatientDialog extends JDialog{
 	        	String mail = t4.getText();
 	        	String phone = t2.getText();	
 				boolean flag, OKFlag;
+				// Validation δεδομένων, σε περίπτωση σφάλματος το πεδίο με το σφάλμα γίνεται κόκκινο
+				//και δεν επιτρέπεται η αποθήκευση
 				OKFlag = true;
 				flag = check.validation(0,fullname);
 	        	if(!flag) {
@@ -81,6 +87,8 @@ public class PatientDialog extends JDialog{
 	        }
 	    }
 	 
+	 /*Δράση για την εμφάνιση του ContactDialog για την διόρθωση στοιχείων επαφής
+	  (αφού πρώτα γίνει αναζήτηση), με το πάτημα του κουμπιού "Διόρθωση Επαφών"*/
 	 class Action3 implements ActionListener {
 	        @Override public void actionPerformed(ActionEvent e) {
 	        	if (!newPatient) {
@@ -100,7 +108,7 @@ public class PatientDialog extends JDialog{
 	        }
 	    }
 	
-
+	/*Constructor παραθύρου διαλόγου*/
 	public PatientDialog(Patient pat) {
 		newPatient = (pat == null);
 		patient = pat;

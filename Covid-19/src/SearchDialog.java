@@ -1,3 +1,5 @@
+/* Παράθυρο Διαλόγου για την αναζήτηση ασθενή ή επαφής*/
+
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -14,7 +16,8 @@ public class SearchDialog extends JDialog{
 	Contact contact;
 	Mail sndml = new Mail();
 	
-	 class Action1 implements ActionListener {
+	/*Δράση για το κλείσιμο του παραθύρου, με το πάτημα του κουμπιού "Έξοδος"*/
+	class Action1 implements ActionListener {
 	        private JDialog parent;
 
 	        Action1(JDialog parent) {
@@ -25,6 +28,7 @@ public class SearchDialog extends JDialog{
 	        }
 	    }
 	 
+	/*Δράση για αναζήτηση, με το πάτημα του κουμπιού "Αναζήτηση"*/
 	 class Action2 implements ActionListener {
 		 private JDialog parent;
 
@@ -64,6 +68,8 @@ public class SearchDialog extends JDialog{
 	        }
 	    }
 	 
+	/*Constructor παραθύρου διαλόγου*/
+	/*Αν το όρισμα pat είναι Null γίνεται αναζήτηση ασθενή, διαφορετικά γίνεται αναζήτηση στις επαφές του*/
 	public SearchDialog(Patient pat) {
 		patient = pat;
 		setModal(true);
